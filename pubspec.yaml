@@ -18,7 +18,8 @@ flutter:
   uses-material-design: true
   assets:
      - assets/WhatsApp Image 2023-06-20 at 6.52.43 PM.jpeg
-     - assets/WhatsApp Image 2023-11-06 at 5.14.46 PM.jpeg
+     - assets/share.png
+     - assets/gloryfm-1-9rh.png
   #  - images/a_dot_ham.jpeg
   # fonts:
   #   - family: Schyler

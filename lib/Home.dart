@@ -70,125 +70,129 @@ class Home extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.989,
-            height: MediaQuery.of(context).size.height * 0.3,
-            child: Stack(
-              children: [
-                Container(
-                    width: double.infinity,
-                    height: 204,
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 32,
-                    ),
-                    decoration: BoxDecoration(
-                      color: const Color(0x7f0a0a0a),
-                      border: Border.all(
-                        color: const Color(
-                          0xff383737,
+          //these last pics
+          Positioned(
+            top: 16 * fem,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.989,
+              height: MediaQuery.of(context).size.height * 0.3,
+              child: Stack(
+                children: [
+                  Container(
+                      width: double.infinity,
+                      height: 204,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 24,
+                        vertical: 32,
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color(0x7f0a0a0a),
+                        border: Border.all(
+                          color: const Color(
+                            0xff383737,
+                          ),
+                          width: 1,
                         ),
-                        width: 1,
+                        borderRadius: BorderRadius.circular(
+                          32,
+                        ),
+                        boxShadow: [],
                       ),
-                      borderRadius: BorderRadius.circular(
-                        32,
-                      ),
-                      boxShadow: [],
-                    ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      verticalDirection: VerticalDirection.down,
-                    )),
-                Positioned(
-                  right: 0,
-                  top: 0, // Adjust the top position as needed
-                  child: Container(
-                    padding:
-                        EdgeInsets.all(16.0), // Adjust the padding as needed
-                    color: Color(
-                        0x000a0d0f), // Set a background color for the container
-                    child: Text(
-                      "Praise\nThe Lord",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white, // Set the text color to white
-                        fontSize: MediaQuery.of(context).size.width *
-                            0.04, // Responsive font size
-                        fontWeight:
-                            FontWeight.bold, // Adjust the font weight as needed
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  left: 13,
-                  top: 14,
-                  child: Container(
-                    width: 184,
-                    height: 183,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        29,
-                      ),
-                      boxShadow: [],
-                      gradient: const LinearGradient(
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                        colors: [
-                          Color(
-                            0x66ffffff,
-                          ),
-                          Color(
-                            0xffffff,
-                          ),
-                        ],
-                        stops: [
-                          0.030383393168449402,
-                          0.9602762460708618,
-                        ],
+                      child: const Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        verticalDirection: VerticalDirection.down,
+                      )),
+                  Positioned(
+                    right: 0,
+                    top: 0, // Adjust the top position as needed
+                    child: Container(
+                      padding:
+                          EdgeInsets.all(16.0), // Adjust the padding as needed
+                      color: Color(
+                          0x000a0d0f), // Set a background color for the container
+                      child: Text(
+                        "Praise\nThe Lord",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white, // Set the text color to white
+                          fontSize: MediaQuery.of(context).size.width *
+                              0.04, // Responsive font size
+                          fontWeight: FontWeight
+                              .bold, // Adjust the font weight as needed
+                        ),
                       ),
                     ),
                   ),
-                ),
-                LayoutBuilder(
-                  builder: (context, constraints) {
-                    // Calculate the desired width based on a percentage (e.g., 30%)
-                    double desiredWidth = constraints.maxWidth * 0.4;
-                    // Calculate the corresponding height to maintain the original aspect ratio
-                    double desiredHeight = 203;
+                  Positioned(
+                    left: 13,
+                    top: 14,
+                    child: Container(
+                      width: 184,
+                      height: 183,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          29,
+                        ),
+                        boxShadow: [],
+                        gradient: const LinearGradient(
+                          begin: Alignment.centerLeft,
+                          end: Alignment.centerRight,
+                          colors: [
+                            Color(
+                              0x66ffffff,
+                            ),
+                            Color(
+                              0xffffff,
+                            ),
+                          ],
+                          stops: [
+                            0.030383393168449402,
+                            0.9602762460708618,
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      // Calculate the desired width based on a percentage (e.g., 30%)
+                      double desiredWidth = constraints.maxWidth * 0.4;
+                      // Calculate the corresponding height to maintain the original aspect ratio
+                      double desiredHeight = 203;
 
-                    return Container(
-                      width: desiredWidth,
-                      height: desiredHeight,
-                      decoration: ShapeDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(
-                              "assets/WhatsApp Image 2023-11-06 at 5.14.46 PM.jpeg"),
-                          fit: BoxFit.fill,
+                      return Container(
+                        width: desiredWidth,
+                        height: desiredHeight,
+                        decoration: ShapeDecoration(
+                          image: DecorationImage(
+                            image: AssetImage(
+                                "assets/WhatsApp Image 2023-11-06 at 5.14.46 PM.jpeg"),
+                            fit: BoxFit.cover,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24),
+                          ),
                         ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(24),
+                      );
+                    },
+                  ),
+                  Positioned(
+                    left: 13,
+                    top: 15,
+                    child: Container(
+                      width: 177,
+                      height: 176,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          24,
                         ),
-                      ),
-                    );
-                  },
-                ),
-                Positioned(
-                  left: 13,
-                  top: 15,
-                  child: Container(
-                    width: 177,
-                    height: 176,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        24,
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           const SizedBox(
@@ -231,7 +235,7 @@ class Home extends StatelessWidget {
                   child: Text(
                     'If we say thaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaat we have not sinned, we make Him a liar, and His word is not in us',
                     textAlign: TextAlign.left,
-                    maxLines: 6,
+                    maxLines: 9,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       color: Color(0xFF7F7F7F),
@@ -243,58 +247,61 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  // autogroupzerdCed (75AsgyqGJsxnTCmZTczerD)
                   width: double.infinity,
-                  height: 76.95 * fem,
+                  height: 90 * fem,
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Container(
-                        // buttonYyP (I380:1058;922:6367)
                         margin: EdgeInsets.fromLTRB(
-                            0 * fem, 35 * fem, 177.39 * fem, 19.95 * fem),
+                          0 * fem,
+                          50 * fem,
+                          30 * fem,
+                          19.95 * fem,
+                        ),
                         width: 104 * fem,
                         height: double.infinity,
                         child: Container(
-                          // autogroupvblmGuP (75Asoydc9Re8HtAy1KvBLM)
                           width: double.infinity,
                           height: double.infinity,
                           child: Center(
                             child: Text(
-                              '1  John  1:10',
+                              '1 John 1:10',
                               style: TextStyle(
-                                fontFamily: 'Inter',
                                 fontSize: 18 * ffem,
                                 fontWeight: FontWeight.w500,
-                                height: 1.2125 * ffem / fem,
                                 color: Color(0xffffffff),
+                                height: 1.2125 * ffem / fem,
                               ),
                             ),
                           ),
                         ),
                       ),
                       TextButton(
-                        // sharembF (455:864)
-                        onPressed: () {},
+                        onPressed: () {
+                          // Add your functionality here
+                        },
                         style: TextButton.styleFrom(
-                          padding: EdgeInsets.zero,
+                          padding: EdgeInsets.only(
+                              top: 20), // Adjust the top value as needed,
                         ),
                         child: Container(
                           width: 103.67 * fem,
                           height: 76.95 * fem,
                           child: Image.asset(
-                            'assets/page-1/images/share.png',
+                            "assets/share.png",
                             width: 103.67 * fem,
                             height: 76.95 * fem,
                           ),
                         ),
-                      ),
+                      )
                     ],
                   ),
-                ),
+                )
               ],
             ),
           ),
+
           //this is the scrollable programs section
           const SizedBox(
             height: 5,
@@ -1805,7 +1812,7 @@ class Home extends StatelessWidget {
                             width: 173.89 * fem,
                             height: 75.86 * fem,
                             child: Image.asset(
-                              'assets/page-1/images/gloryfm-1.png',
+                              'assets/gloryfm-1-9rh.png',
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -1885,7 +1892,7 @@ class Home extends StatelessWidget {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(15 * fem),
                               child: Image.asset(
-                                'assets/page-1/images/gloryfm-1.png',
+                                'assets/gloryfm-1-9rh.png',
                                 fit: BoxFit.cover,
                               ),
                             ),
