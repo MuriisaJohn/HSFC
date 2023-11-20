@@ -76,125 +76,83 @@ class Home extends StatelessWidget {
             child: SizedBox(
               width: MediaQuery.of(context).size.width * 0.989,
               height: MediaQuery.of(context).size.height * 0.3,
-              child: Stack(
-                children: [
-                  Container(
-                      width: double.infinity,
-                      height: 204,
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 32,
-                      ),
-                      decoration: BoxDecoration(
-                        color: const Color(0x7f0a0a0a),
-                        border: Border.all(
-                          color: const Color(
-                            0xff383737,
-                          ),
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.circular(
-                          32,
-                        ),
-                        boxShadow: [],
-                      ),
-                      child: const Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        verticalDirection: VerticalDirection.down,
-                      )),
-                  Positioned(
-                    right: 0,
-                    top: 0, // Adjust the top position as needed
-                    child: Container(
-                      padding:
-                          EdgeInsets.all(16.0), // Adjust the padding as needed
-                      color: Color(
-                          0x000a0d0f), // Set a background color for the container
-                      child: Text(
-                        "Praise\nThe Lord",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white, // Set the text color to white
-                          fontSize: MediaQuery.of(context).size.width *
-                              0.04, // Responsive font size
-                          fontWeight: FontWeight
-                              .bold, // Adjust the font weight as needed
-                        ),
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 13,
-                    top: 14,
-                    child: Container(
-                      width: 184,
-                      height: 183,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          29,
-                        ),
-                        boxShadow: [],
-                        gradient: const LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            Color(
-                              0x66ffffff,
-                            ),
-                            Color(
-                              0xffffff,
-                            ),
-                          ],
-                          stops: [
-                            0.030383393168449402,
-                            0.9602762460708618,
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  LayoutBuilder(
-                    builder: (context, constraints) {
-                      // Calculate the desired width based on a percentage (e.g., 30%)
-                      double desiredWidth = constraints.maxWidth * 0.4;
-                      // Calculate the corresponding height to maintain the original aspect ratio
-                      double desiredHeight = 203;
-
-                      return Container(
-                        width: desiredWidth,
-                        height: desiredHeight,
-                        decoration: ShapeDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/WhatsApp Image 2023-11-06 at 5.14.46 PM.jpeg"),
+              child: Card(
+                elevation: 5,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(29 * fem),
+                ),
+                color: Colors.transparent,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(29 * fem),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.989,
+                          height: MediaQuery.of(context).size.height * 0.3,
+                          child: Image.asset(
+                            'assets/gloryfm-1-9rh.png',
                             fit: BoxFit.cover,
                           ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(24),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                  Positioned(
-                    left: 13,
-                    top: 15,
-                    child: Container(
-                      width: 177,
-                      height: 176,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          24,
                         ),
                       ),
-                    ),
+                      Stack(
+                        children: [
+                          // Your existing widgets...
+
+                          Positioned(
+                            right: 10 * fem,
+                            top: 6 * fem,
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              width: MediaQuery.of(context).size.width * 0.6,
+                              child: Align(
+                                alignment: Alignment.topRight,
+                                child: Text(
+                                  'Praise\nThe Lord',
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 20 * ffem,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            right: 10 * fem,
+                            bottom: 6 * fem,
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              width: MediaQuery.of(context).size.width * 0.6,
+                              child: Align(
+                                alignment: Alignment.bottomRight,
+                                child: Text(
+                                  'welcome to Holy Spirit Fire Church app',
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w200,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),
+
           const SizedBox(
             height: 5,
           ),
