@@ -94,7 +94,7 @@ class Home extends StatelessWidget {
                           height: MediaQuery.of(context).size.height * 0.3,
                           child: Image.asset(
                             'assets/gloryfm-1-9rh.png',
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                           ),
                         ),
                       ),
@@ -1595,7 +1595,7 @@ class Home extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Positioned(
+                Positioned(
                   left: 28.62,
                   top: 47,
                   child: SizedBox(
@@ -1606,14 +1606,15 @@ class Home extends StatelessWidget {
                         children: [
                           TextSpan(
                             text:
-                                'For church constrution and contribution this is the place to click',
+                                'For church construction and contribution, this is the place to click',
                             style: TextStyle(
                               color: Color(0xFFF0EDED),
                               fontSize: 13,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w300,
                               height: 0.11,
-                              letterSpacing: -0.17,
+                              letterSpacing:
+                                  0.5, // Adjust the letterSpacing here
                             ),
                           ),
                           TextSpan(
@@ -1624,18 +1625,20 @@ class Home extends StatelessWidget {
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w300,
                               height: 0.11,
-                              letterSpacing: -0.17,
+                              letterSpacing:
+                                  0.5, // Adjust the letterSpacing here
                             ),
                           ),
                           TextSpan(
-                            text: 'in to .',
+                            text: 'into.',
                             style: TextStyle(
                               color: Color(0xFFF0EDED),
                               fontSize: 13,
                               fontFamily: 'Roboto',
                               fontWeight: FontWeight.w300,
                               height: 0.11,
-                              letterSpacing: -0.17,
+                              letterSpacing:
+                                  0.5, // Adjust the letterSpacing here
                             ),
                           ),
                         ],
