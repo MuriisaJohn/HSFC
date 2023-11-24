@@ -1699,19 +1699,26 @@ class Home extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
-                                width: 45,
-                                child: Text(
-                                  'BUILD',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontFamily: 'Poppins',
-                                    fontWeight: FontWeight.w400,
-                                    height: 0,
+                              Stack(
+                                children: [
+                                  Positioned(
+                                    //right: 0, // Adjust the left position here
+                                    child: SizedBox(
+                                      width: 32,
+                                      child: Text(
+                                        'BUILD',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 10,
+                                          fontFamily: 'Poppins',
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
+                                  // Add other widgets to the Stack if needed
+                                ],
+                              )
                             ],
                           ),
                         ),
@@ -1724,28 +1731,6 @@ class Home extends StatelessWidget {
           ),
 
 // the other 2 containers
-          Row(
-            children: [
-              SizedBox(
-                width: 80,
-                height: 161,
-                child: Stack(
-                  children: [
-                    // ... First Positioned and its content ...
-                  ],
-                ),
-              ),
-              SizedBox(
-                width: 183,
-                height: 161,
-                child: Stack(
-                  children: [
-                    // ... Second Positioned and its content ...
-                  ],
-                ),
-              ),
-            ],
-          )
 
           //another container
         ])));
