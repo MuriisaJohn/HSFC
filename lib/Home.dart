@@ -1,6 +1,7 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:muriisa/data_list.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -1074,7 +1075,7 @@ class Home extends StatelessWidget {
                             SizedBox(
                               width: double.infinity,
                               child: Text(
-                                'lunch hour fellowship              ',
+                                'lunch hour fellowship  ',
                                 style: TextStyle(
                                   color: Color(0xFFC2C2C2),
                                   fontSize: 16,
@@ -1546,7 +1547,6 @@ class Home extends StatelessWidget {
             ),
           ),
 //the box that separent the widgets
-
           const SizedBox(
             height: 1,
           ),
@@ -1729,9 +1729,11 @@ class Home extends StatelessWidget {
               ],
             ),
           ),
-
+          const SizedBox(
+            height: 6,
+          ),
 // the other 2 containers
-
+          YourWidget()
           //another container
         ])));
   }
