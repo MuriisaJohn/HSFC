@@ -56,6 +56,7 @@ class YourWidget extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
+                    SizedBox(height: 16),
                     SizedBox(
                       height: 60, // Adjust height as needed
                       child: Container(
@@ -96,7 +97,7 @@ class YourWidget extends StatelessWidget {
                                     item["title"],
                                     style: TextStyle(
                                       color: Colors.white,
-                                      fontSize: 14,
+                                      fontSize: 20,
                                       fontFamily: 'Inter',
                                       fontWeight: FontWeight.w400,
                                       height: 0.12,
