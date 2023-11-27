@@ -6,7 +6,7 @@ class YourWidget extends StatelessWidget {
     {
       "title": "Well Designed",
       "color": 0xff2980b9,
-      "image": "assets/human2.png"
+      "image": "assets/church .png"
     },
     {
       "title": "Includes Everyone",
@@ -56,15 +56,59 @@ class YourWidget extends StatelessWidget {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    SizedBox(height: 16),
-                    Text(
-                      item["title"], // Use the dynamic title from data
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
+                    SizedBox(
+                      height: 60, // Adjust height as needed
+                      child: Container(
+                        width: double.infinity,
+                        height: double.infinity,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              height: 44,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 24, vertical: 8),
+                              decoration: ShapeDecoration(
+                                gradient: RadialGradient(
+                                  center: Alignment(-0.50, 0.73),
+                                  radius: 0,
+                                  colors: [
+                                    Colors.white,
+                                    Colors.white.withOpacity(0)
+                                  ],
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(
+                                    width: 1,
+                                    color: Colors.white.withOpacity(0.1),
+                                  ),
+                                  borderRadius: BorderRadius.circular(999),
+                                ),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    item["title"],
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w400,
+                                      height: 0.12,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
+                    )
                   ],
                 ),
               );
