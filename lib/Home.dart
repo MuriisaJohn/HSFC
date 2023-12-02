@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:muriisa/data_list.dart';
+import 'package:muriisa/radio.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -44,12 +45,29 @@ class Home extends StatelessWidget {
                 children: [
                   IconButton(
                     icon: Icon(Icons.home),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              gloryfm(), // Replace MyRadioPage() with your page/widget
+                        ),
+                      );
+                    },
                   ),
                   IconButton(
                     icon: Icon(Icons.radio),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              gloryfm(), // Replace MyRadioPage() with your page/widget
+                        ),
+                      );
+                    },
                   ),
+
                   SizedBox(
                       width: 48), // Empty space for the FloatingActionButton
                   IconButton(
