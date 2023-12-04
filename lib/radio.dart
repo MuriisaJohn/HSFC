@@ -10,8 +10,10 @@ class gloryfm extends StatelessWidget {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         title: Text('New Page'),
+        backgroundColor: Color(0x00edeaea),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -48,60 +50,8 @@ class gloryfm extends StatelessWidget {
                       Container(
                         // headerUUm (401:1958)
                         margin: EdgeInsets.fromLTRB(
-                            14.81 * fem, 0 * fem, 23.76 * fem, 13.31 * fem),
+                            14.81 * fem, 0 * fem, 14.81 * fem, 0 * fem),
                         width: double.infinity,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 3.66 * fem, 3.69 * fem, 0 * fem),
-                              width: 13.27 * fem,
-                              height: 7.37 * fem,
-                              child: Image.network(
-                                'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                                width: 13.27 * fem,
-                                height: 7.37 * fem,
-                              ),
-                            ),
-                            Container(
-                              // groupMS5 (401:1966)
-                              margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 2.9 * fem, 4.22 * fem, 0 * fem),
-                              width: 11.26 * fem,
-                              height: 8.09 * fem,
-                              child: Image.network(
-                                'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                                width: 11.26 * fem,
-                                height: 8.09 * fem,
-                              ),
-                            ),
-                            Container(
-                              // groupG3F (401:1971)
-                              margin: EdgeInsets.fromLTRB(
-                                  0 * fem, 2.93 * fem, 0 * fem, 0 * fem),
-                              width: 19.89 * fem,
-                              height: 9.59 * fem,
-                              child: Image.network(
-                                'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                                width: 19.89 * fem,
-                                height: 9.59 * fem,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        // icons8left1Nry (458:1165)
-                        margin: EdgeInsets.fromLTRB(
-                            3 * fem, 0 * fem, 0 * fem, 42 * fem),
-                        width: 18 * fem,
-                        height: 16 * fem,
-                        child: Image.network(
-                          'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                          width: 18 * fem,
-                          height: 16 * fem,
-                        ),
                       ),
                       Container(
                         // autogroupuihot4d (75BP73zBrBUNXbwsqhuiHo)
@@ -117,7 +67,7 @@ class gloryfm extends StatelessWidget {
                               top: 0 * fem,
                               child: Align(
                                 child: SizedBox(
-                                  width: 397 * fem,
+                                  width: 286 * fem,
                                   height: 292 * fem,
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -130,7 +80,7 @@ class gloryfm extends StatelessWidget {
                                           Color(0xffffffff),
                                           Color(0x00ffffff)
                                         ],
-                                        stops: <double>[0.068, 0.891],
+                                        stops: <double>[0.068, 0.6],
                                       ),
                                     ),
                                   ),
@@ -138,66 +88,55 @@ class gloryfm extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                              // group25SEZ (401:1990)
                               left: 0 * fem,
                               top: 0 * fem,
                               child: Container(
-                                width: 399 * fem,
+                                width: 270 * fem,
                                 height: 342 * fem,
-                                child: Stack(
-                                  children: [
-                                    Positioned(
-                                      // gloryfm1AAZ (458:1154)
-                                      left: 0 * fem,
-                                      top: 0 * fem,
-                                      child: Align(
-                                        child: SizedBox(
-                                          width: 399 * fem,
-                                          height: 181 * fem,
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(39 * fem),
-                                            child: Image.network(
-                                              'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                                              fit: BoxFit.cover,
+                                child: Stack(children: [
+                                  // The value of fem here is arbitrary, please assign an appropriate value based on your requirement.
+
+                                  Container(
+                                    width: 270 * fem,
+                                    height: 342 * fem,
+                                    child: Stack(
+                                      children: <Widget>[
+                                        Positioned(
+                                          left: 0,
+                                          top: 0,
+                                          child: Align(
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(
+                                                      39 * fem),
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ),
-                                    Positioned(
-                                      // ellipse4f7K (401:1991)
-                                      left: 72.4970703125 * fem,
-                                      top: 36.6163330078 * fem,
-                                      child: Align(
-                                        child: SizedBox(
-                                          width: 118.51 * fem,
-                                          height: 128.9 * fem,
-                                          child: Image.network(
-                                            'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                                            width: 118.51 * fem,
-                                            height: 128.9 * fem,
+                                        Positioned(
+                                          left: 13 * fem,
+                                          top: 86 * fem,
+                                          child: Align(
+                                            child: SizedBox(
+                                              width: 270 * fem,
+                                              height: 256 * fem,
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(0.0),
+                                                  topRight:
+                                                      Radius.circular(0.0),
+                                                ),
+                                                child: Image.asset(
+                                                  'assets/gloryfm-1-9rh.png',
+                                                  fit: BoxFit.fill,
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                    Positioned(
-                                      // screenshot202304201845321AJy (401:1997)
-                                      left: 32 * fem,
-                                      top: 86 * fem,
-                                      child: Align(
-                                        child: SizedBox(
-                                          width: 349 * fem,
-                                          height: 256 * fem,
-                                          child: Image.network(
-                                            'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ]),
                               ),
                             ),
                             Positioned(
@@ -242,7 +181,7 @@ class gloryfm extends StatelessWidget {
                                                   image: DecorationImage(
                                                     fit: BoxFit.cover,
                                                     image: NetworkImage(
-                                                      'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
+                                                      'https://media3.giphy.com/media/mXbQ2IU02cGRhBO2ye/giphy.gif?cid=ecf05e47g0s3h1f47xr7ho3ip9xttq4xasma7t89vdflpc3d&ep=v1_gifs_related&rid=giphy.gif&ct=s',
                                                     ),
                                                   ),
                                                 ),
@@ -253,49 +192,22 @@ class gloryfm extends StatelessWidget {
                                       ),
                                     ),
                                     Positioned(
-                                      // circleplay2mi5 (400:1946)
-                                      left: 341.3630371094 * fem,
-                                      top: 17 * fem,
-                                      child: Container(
-                                        width: 57.64 * fem,
-                                        height: 77 * fem,
-                                        child: Container(
-                                          // group6EZ (400:1947)
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 0 * fem, 12 * fem),
-                                          padding: EdgeInsets.fromLTRB(0 * fem,
-                                              12 * fem, 0 * fem, 0 * fem),
-                                          width: 432.36 * fem,
-                                          height: 65 * fem,
-                                          child: Align(
-                                            // vectorQm3 (400:1948)
-                                            alignment: Alignment.bottomLeft,
-                                            child: SizedBox(
-                                              width: 51 * fem,
-                                              height: 53 * fem,
-                                              child: Image.network(
-                                                'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                                                width: 51 * fem,
-                                                height: 53 * fem,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Positioned(
                                       // rectangle5wW5 (400:1950)
                                       left: 11.9776611328 * fem,
-                                      top: 12 * fem,
+                                      top: 30,
                                       child: Align(
+                                        // vectorQm3 (400:1948)
+
                                         child: SizedBox(
-                                          width: 64.38 * fem,
-                                          height: 87 * fem,
-                                          child: Image.network(
-                                            'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                                            width: 64.38 * fem,
-                                            height: 87 * fem,
-                                          ),
+                                          width: 51 * fem,
+                                          height: 53 * fem,
+                                          child: IconButton(
+                                              icon: Icon(Icons
+                                                  .play_circle_fill), // Use the play button icon
+                                              iconSize: 60 * fem,
+                                              onPressed: () {
+                                                // Add functionality when the play button is pressed
+                                              }),
                                         ),
                                       ),
                                     ),
