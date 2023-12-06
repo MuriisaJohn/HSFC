@@ -11,10 +11,76 @@ class gloryfm extends StatelessWidget {
     double ffem = fem * 0.97;
     return Scaffold(
       extendBody: true,
-      appBar: AppBar(
-        title: Text('New Page'),
-        backgroundColor: Color(0x00edeaea),
+      backgroundColor: Color(0xff060606),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xfff6390a),
+        foregroundColor: Colors.white,
+        splashColor: Color(0x523bb7ff),
+        elevation: 4.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        // mini: true,
+        onPressed: () {
+          // Handle button press
+        },
+        child: Icon(Icons.live_tv),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0), // Adjust the radius as needed
+          topRight: Radius.circular(20.0), // Adjust the radius as needed
+        ),
+        child: Container(
+          child: BottomAppBar(
+            clipBehavior: Clip.antiAlias,
+            shape: CircularNotchedRectangle(),
+            notchMargin: 10,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.home),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            gloryfm(), // Replace MyRadioPage() with your page/widget
+                      ),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.radio),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            gloryfm(), // Replace MyRadioPage() with your page/widget
+                      ),
+                    );
+                  },
+                ),
+
+                SizedBox(width: 48), // Empty space for the FloatingActionButton
+                IconButton(
+                  icon: Icon(Icons.person),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: Icon(Icons.settings),
+                  onPressed: () {},
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      // backgroundColor: Color(0x743f3e3e),
+
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -80,7 +146,7 @@ class gloryfm extends StatelessWidget {
                                           Color(0xffffffff),
                                           Color(0x00ffffff)
                                         ],
-                                        stops: <double>[0.068, 0.6],
+                                        stops: <double>[0.068, 0.9],
                                       ),
                                     ),
                                   ),
@@ -160,8 +226,8 @@ class gloryfm extends StatelessWidget {
                                           ),
                                           child: Align(
                                             child: SizedBox(
-                                              width: 300 * fem,
-                                              height: 105 * fem,
+                                              width: 285 * fem,
+                                              height: 90 * fem,
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   borderRadius:
@@ -171,17 +237,17 @@ class gloryfm extends StatelessWidget {
                                                   gradient: LinearGradient(
                                                     begin:
                                                         Alignment(-0.553, -1),
-                                                    end: Alignment(0.553, 0.3),
+                                                    end: Alignment(0.553, 1),
                                                     colors: <Color>[
                                                       Color(0x19ffffff),
                                                       Color(0x00ffffff)
                                                     ],
-                                                    stops: <double>[0, 1],
+                                                    stops: <double>[0, 0.9],
                                                   ),
                                                   image: DecorationImage(
                                                     fit: BoxFit.cover,
                                                     image: NetworkImage(
-                                                      'https://media3.giphy.com/media/mXbQ2IU02cGRhBO2ye/giphy.gif?cid=ecf05e47g0s3h1f47xr7ho3ip9xttq4xasma7t89vdflpc3d&ep=v1_gifs_related&rid=giphy.gif&ct=s',
+                                                      'https://cdn-icons-png.flaticon.com/512/709/709559.png ',
                                                     ),
                                                   ),
                                                 ),
@@ -193,8 +259,8 @@ class gloryfm extends StatelessWidget {
                                     ),
                                     Positioned(
                                       // rectangle5wW5 (400:1950)
-                                      left: 11.9776611328 * fem,
-                                      top: 30,
+                                      left: 0 * fem,
+                                      top: 20,
                                       child: Align(
                                         // vectorQm3 (400:1948)
 
@@ -204,7 +270,8 @@ class gloryfm extends StatelessWidget {
                                           child: IconButton(
                                               icon: Icon(Icons
                                                   .play_circle_fill), // Use the play button icon
-                                              iconSize: 60 * fem,
+                                              iconSize: 50 * fem,
+                                              color: Colors.white,
                                               onPressed: () {
                                                 // Add functionality when the play button is pressed
                                               }),
@@ -281,7 +348,7 @@ class gloryfm extends StatelessWidget {
                               left: 0 * fem,
                               top: 0 * fem,
                               child: Container(
-                                width: 392 * fem,
+                                width: 288 * fem,
                                 height: 396 * fem,
                                 decoration: BoxDecoration(
                                   color: Color(0xff1f1f1f),
@@ -294,7 +361,7 @@ class gloryfm extends StatelessWidget {
                                       left: 53 * fem,
                                       top: 94.9865722656 * fem,
                                       child: Container(
-                                        width: 307 * fem,
+                                        width: 300 * fem,
                                         height: 76.26 * fem,
                                         child: Row(
                                           crossAxisAlignment:
@@ -317,7 +384,7 @@ class gloryfm extends StatelessWidget {
                                                     margin: EdgeInsets.fromLTRB(
                                                         0 * fem,
                                                         0 * fem,
-                                                        61 * fem,
+                                                        0 * fem,
                                                         0 * fem),
                                                     width: 108 * fem,
                                                     height: double.infinity,
@@ -485,21 +552,6 @@ class gloryfm extends StatelessWidget {
                                                       ],
                                                     ),
                                                   ),
-                                                  Container(
-                                                    // ellipse96NH (404:2184)
-                                                    margin: EdgeInsets.fromLTRB(
-                                                        0 * fem,
-                                                        12.04 * fem,
-                                                        0 * fem,
-                                                        0 * fem),
-                                                    width: 15 * fem,
-                                                    height: 20.07 * fem,
-                                                    child: Image.network(
-                                                      'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                                                      width: 15 * fem,
-                                                      height: 20.07 * fem,
-                                                    ),
-                                                  ),
                                                 ],
                                               ),
                                             ),
@@ -620,25 +672,10 @@ class gloryfm extends StatelessWidget {
                                                 style: TextStyle(
                                                   fontFamily: 'Poppins',
                                                   fontSize: 16 * ffem,
-                                                  fontWeight: FontWeight.w400,
+                                                  fontWeight: FontWeight.w600,
                                                   height: 1.5 * ffem / fem,
                                                   color: Color(0xffffffff),
                                                 ),
-                                              ),
-                                            ),
-                                            Container(
-                                              // autogrouphvaup4d (75BQ52NvYYu7F3B8DMHvAu)
-                                              margin: EdgeInsets.fromLTRB(
-                                                  0 * fem,
-                                                  5.65 * fem,
-                                                  0 * fem,
-                                                  0 * fem),
-                                              width: 30.46 * fem,
-                                              height: 31.1 * fem,
-                                              child: Image.network(
-                                                'https://unsplash.com/photos/a-man-standing-in-a-canyon-with-the-sun-shining-through-the-rocks-vrbQpGoN8fw',
-                                                width: 30.46 * fem,
-                                                height: 31.1 * fem,
                                               ),
                                             ),
                                           ],
@@ -675,7 +712,7 @@ class gloryfm extends StatelessWidget {
                                           width: 180 * fem,
                                           height: 21 * fem,
                                           child: Text(
-                                            'Declaring the Lord’s glory.\n\n',
+                                            'Declaring the Lord’s glory.',
                                             style: TextStyle(
                                               fontFamily: 'Poppins',
                                               fontSize: 14 * ffem,

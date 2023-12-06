@@ -171,9 +171,39 @@ class Home extends StatelessWidget {
               ),
             ),
           ),
-
+          Container(
+            alignment: Alignment.centerLeft, // Align the Row to the left
+            child: Row(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Align items to the start
+              children: [
+                Column(
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start, // Align text to the start
+                  children: [
+                    Text(
+                      '    REFRESH',
+                      style: TextStyle(
+                        fontFamily: 'Pacifico',
+                        fontSize: 20 * ffem,
+                        fontWeight: FontWeight.w600,
+                        height: 1.5 * ffem / fem,
+                        color: Color(0xFFFFFFFF),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(width: 180),
+                Icon(
+                  Icons
+                      .local_fire_department, // Replace with your desired status icon
+                  color: Colors.green, // Set icon color as needed
+                ),
+              ],
+            ),
+          ),
           const SizedBox(
-            height: 5,
+            height: 1,
           ),
           Container(
             width: MediaQuery.of(context).size.width * 0.989,
@@ -281,14 +311,14 @@ class Home extends StatelessWidget {
 
           //this is the scrollable programs section
           const SizedBox(
-            height: 5,
+            height: 10,
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
                 Container(
-                  width: 1778,
+                  width: 1800,
                   height: 150,
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -1566,11 +1596,11 @@ class Home extends StatelessWidget {
           ),
 //the box that separent the widgets
           const SizedBox(
-            height: 1,
+            height: 3,
           ),
           Container(
             width: MediaQuery.of(context).size.width * 0.989,
-            height: MediaQuery.of(context).size.height * 0.1,
+            height: MediaQuery.of(context).size.height * 0.2,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(16), // Rounded border radius
               color: Colors
@@ -1590,7 +1620,7 @@ class Home extends StatelessWidget {
 
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.989,
-                  height: MediaQuery.of(context).size.height * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.2,
                   child: Stack(
                     children: [
                       Positioned(
@@ -1748,7 +1778,7 @@ class Home extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 6,
+            height: 20,
           ),
 // the other 2 containers
           YourWidget()
