@@ -247,8 +247,7 @@ class gloryfm extends StatelessWidget {
                                                   image: DecorationImage(
                                                     fit: BoxFit.cover,
                                                     image: NetworkImage(
-                                                      'https://cdn-icons-png.flaticon.com/512/709/709559.png ',
-                                                    ),
+                                                        'https://p7.hiclipart.com/preview/184/530/423/acoustic-wave-computer-icons-sound-wave.jpg'),
                                                   ),
                                                 ),
                                               ),
