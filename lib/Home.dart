@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:muriisa/data_list.dart';
 import 'package:muriisa/radio.dart';
+import 'package:muriisa/youtube/youtube_home.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -26,6 +27,10 @@ class Home extends StatelessWidget {
           // mini: true,
           onPressed: () {
             // Handle button press
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomeScreen()),
+            );
           },
           child: Icon(Icons.live_tv),
         ),
