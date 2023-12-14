@@ -5,27 +5,28 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=2.19.0 <4.0.0"
-cupertino_icons: ^1.0.2
+
+dependencies:
+  cupertino_icons: "^1.0.2"
   http: ^0.13.4
   youtube_player_flutter: ^8.1.0
   animations: ^2.0.3
-
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.2
 
-
 flutter:
   uses-material-design: true
   assets:
-     - assets/Whats.jpeg
-     - assets/share.png
-     - assets/gloryfm-1-9rh.png
-     - assets/WhatsApp Image 2023-11-06 at 5.14.46 PM.jpeg
-     - assets/church .png
-     - assets/sound-waves.png
+    - assets/Whats.jpeg
+    - assets/share.png
+    - assets/gloryfm-1-9rh.png
+    - assets/WhatsApp Image 2023-11-06 at 5.14.46 PM.jpeg
+    - assets/church .png
+    - assets/sound-waves.png
+
   #  - images/a_dot_ham.jpeg
   # fonts:
   #   - family: Schyler
