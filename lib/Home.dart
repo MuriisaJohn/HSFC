@@ -55,7 +55,7 @@ class Home extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              gloryfm(), // Replace MyRadioPage() with your page/widget
+                              Home(), // Replace MyRadioPage() with your page/widget
                         ),
                       );
                     },
@@ -67,7 +67,7 @@ class Home extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              gloryfm(), // Replace MyRadioPage() with your page/widget
+                              GloryFM(), // Replace MyRadioPage() with your page/widget
                         ),
                       );
                     },

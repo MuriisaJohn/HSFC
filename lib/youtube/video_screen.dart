@@ -40,10 +40,22 @@ class _VideoScreenState extends State<VideoScreen> {
                 controller: _controller,
                 showVideoProgressIndicator: true,
                 onReady: () {
+                  _controller.play();
                   print('Player is ready.');
                 },
               ),
             ),
+            /* Positioned(
+              top: 100,
+              left: 20,
+              child: Text(
+                'Custom Overlay',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),*/
           ],
         ),
       ),

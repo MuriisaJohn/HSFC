@@ -1,9 +1,41 @@
 import 'dart:ui';
-
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:muriisa/Home.dart';
 
-class gloryfm extends StatelessWidget {
+class GloryFM extends StatefulWidget {
+  @override
+  _GloryFMState createState() => _GloryFMState();
+}
+
+class _GloryFMState extends State<GloryFM> {
+  AudioPlayer audioPlayer = AudioPlayer();
+  bool isPlaying = false;
+
+  void playPauseAudio() async {
+    try {
+      if (isPlaying) {
+        await audioPlayer.pause();
+      } else {
+        await audioPlayer.play(
+          'https://stream-155.zeno.fm/5remmcqkpd0uv?zs=aRJPFchDSMWQfAlhqYCwFA',
+        );
+      }
+    } catch (e) {
+      print('Error playing audio: $e');
+    }
+
+    setState(() {
+      isPlaying = !isPlaying;
+    });
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     double baseWidth = 308;
@@ -47,7 +79,7 @@ class gloryfm extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            gloryfm(), // Replace MyRadioPage() with your page/widget
+                            Home(), // Replace MyRadioPage() with your page/widget
                       ),
                     );
                   },
@@ -59,7 +91,7 @@ class gloryfm extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            gloryfm(), // Replace MyRadioPage() with your page/widget
+                            GloryFM(), // Replace MyRadioPage() with your page/widget
                       ),
                     );
                   },
@@ -240,14 +272,9 @@ class gloryfm extends StatelessWidget {
                                                     end: Alignment(0.553, 1),
                                                     colors: <Color>[
                                                       Color(0x19ffffff),
-                                                      Color(0x00ffffff)
+                                                      Color(0x00ffffff),
                                                     ],
                                                     stops: <double>[0, 0.9],
-                                                  ),
-                                                  image: DecorationImage(
-                                                    fit: BoxFit.cover,
-                                                    image: NetworkImage(
-                                                        'https://p7.hiclipart.com/preview/184/530/423/acoustic-wave-computer-icons-sound-wave.jpg'),
                                                   ),
                                                 ),
                                               ),
@@ -261,19 +288,14 @@ class gloryfm extends StatelessWidget {
                                       left: 0 * fem,
                                       top: 20,
                                       child: Align(
-                                        // vectorQm3 (400:1948)
-
-                                        child: SizedBox(
-                                          width: 51 * fem,
-                                          height: 53 * fem,
-                                          child: IconButton(
-                                              icon: Icon(Icons
-                                                  .play_circle_fill), // Use the play button icon
-                                              iconSize: 50 * fem,
-                                              color: Colors.white,
-                                              onPressed: () {
-                                                // Add functionality when the play button is pressed
-                                              }),
+                                        alignment: Alignment
+                                            .center, // Adjust alignment as needed
+                                        child: IconButton(
+                                          icon: Icon(isPlaying
+                                              ? Icons.pause
+                                              : Icons.play_arrow),
+                                          iconSize: 48.0,
+                                          onPressed: playPauseAudio,
                                         ),
                                       ),
                                     ),

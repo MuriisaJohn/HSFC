@@ -11,6 +11,8 @@ dependencies:
   http: ^0.13.4
   youtube_player_flutter: ^8.1.0
   animations: ^2.0.3
+  audioplayers: ^0.20.1
+  
 
 dev_dependencies:
   flutter_test:
