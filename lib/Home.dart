@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:muriisa/data_list.dart';
 import 'package:muriisa/radio.dart';
 import 'package:muriisa/youtube/youtube_home.dart';
+import 'package:muriisa/about.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -82,7 +83,7 @@ class Home extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              Scene(), // Replace MyRadioPage() with your page/widget
+                              About(), // Replace MyRadioPage() with your page/widget
                         ),
                       );
                     },
