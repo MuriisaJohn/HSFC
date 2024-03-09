@@ -77,7 +77,15 @@ class Home extends StatelessWidget {
                       width: 48), // Empty space for the FloatingActionButton
                   IconButton(
                     icon: Icon(Icons.person),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              Scene(), // Replace MyRadioPage() with your page/widget
+                        ),
+                      );
+                    },
                   ),
                   IconButton(
                     icon: Icon(Icons.settings),
