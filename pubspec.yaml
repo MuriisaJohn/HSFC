@@ -12,6 +12,7 @@ dependencies:
   youtube_player_flutter: ^8.1.0
   animations: ^2.0.3
   audioplayers: ^0.20.1
+  percent_indicator: ^4.2.3
   
 
 dev_dependencies:

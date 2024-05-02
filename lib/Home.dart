@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:muriisa/data_list.dart';
 import 'package:muriisa/radio.dart';
+import 'package:muriisa/youtube/story/storypage.dart';
 import 'package:muriisa/youtube/youtube_home.dart';
 import 'package:muriisa/about.dart';
 
@@ -104,6 +105,7 @@ class Home extends StatelessWidget {
             height: 5,
           ),
           //these last pics
+
           Positioned(
             top: 16 * fem,
             child: SizedBox(
@@ -129,6 +131,45 @@ class Home extends StatelessWidget {
                             'assets/gloryfm-1-9rh.png',
                             fit: BoxFit.fill,
                           ),
+                        ),
+                      ),
+                      Positioned.fill(
+                        top: 7,
+                        left: 16,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Ready to start\nyour first session?",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 24,
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              "Meditation 5-10 min",
+                              style: TextStyle(
+                                color: Colors.white.withOpacity(.8),
+                              ),
+                            ),
+                            const Spacer(),
+                            SizedBox(
+                              width: 140,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: Colors.indigo,
+                                ),
+                                onPressed: () {
+                                  // Add your onPressed logic here
+                                },
+                                child: const Text("START"),
+                              ),
+                            ),
+                            const Spacer(),
+                          ],
                         ),
                       ),
                       Stack(
@@ -208,11 +249,18 @@ class Home extends StatelessWidget {
                   ],
                 ),
                 SizedBox(width: 180),
-                Icon(
-                  Icons
-                      .local_fire_department, // Replace with your desired status icon
-                  color: Colors.green, // Set icon color as needed
-                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => StoryPage()),
+                    );
+                  },
+                  child: Icon(
+                    Icons.local_fire_department,
+                    color: Colors.green,
+                  ),
+                )
               ],
             ),
           ),
