@@ -132,11 +132,11 @@ class _GloryFMState extends State<GloryFM> {
                 width: double.infinity,
                 height: double.infinity,
                 decoration: BoxDecoration(
-                  color: Color(0xffaf7359),
+                  color: Color(0xff050505),
                   borderRadius: BorderRadius.circular(33.180683136 * fem),
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0x829a9eac),
+                      color: Color(0x009a9eac),
                       offset: Offset(0 * fem, 10.0623445511 * fem),
                       blurRadius: 20.1246891022 * fem,
                     ),
@@ -212,7 +212,7 @@ class _GloryFMState extends State<GloryFM> {
                                         ),
                                         Positioned(
                                           left: 13 * fem,
-                                          top: 86 * fem,
+                                          top: 16 * fem,
                                           child: Align(
                                             child: SizedBox(
                                               width: 270 * fem,

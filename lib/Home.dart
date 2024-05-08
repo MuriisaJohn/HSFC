@@ -116,23 +116,11 @@ class Home extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(29 * fem),
                 ),
-                color: Colors.transparent,
+                color: Color(0x00000000),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(29 * fem),
                   child: Stack(
                     children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.989,
-                          height: MediaQuery.of(context).size.height * 0.3,
-                          child: Image.asset(
-                            'assets/gloryfm-1-9rh.png',
-                            fit: BoxFit.fill,
-                          ),
-                        ),
-                      ),
                       Positioned.fill(
                         top: 7,
                         left: 16,
@@ -140,7 +128,7 @@ class Home extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              "Ready to start\nyour first session?",
+                              "Ready to start\nyour journey?",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
@@ -157,15 +145,16 @@ class Home extends StatelessWidget {
                             const Spacer(),
                             SizedBox(
                               width: 140,
-                              child: ElevatedButton(
+                              child: ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
-                                  foregroundColor: Colors.indigo,
+                                  foregroundColor: Color(0xffe82222),
                                 ),
                                 onPressed: () {
                                   // Add your onPressed logic here
                                 },
-                                child: const Text("START"),
+                                icon: Icon(Icons.play_arrow), // Play icon
+                                label: Text("WATCH"),
                               ),
                             ),
                             const Spacer(),
@@ -191,27 +180,6 @@ class Home extends StatelessWidget {
                                     fontFamily: 'Roboto',
                                     fontSize: 20 * ffem,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            right: 10 * fem,
-                            bottom: 6 * fem,
-                            child: Container(
-                              padding: EdgeInsets.all(5),
-                              width: MediaQuery.of(context).size.width * 0.6,
-                              child: Align(
-                                alignment: Alignment.bottomRight,
-                                child: Text(
-                                  'welcome to Holy Spirit Fire Church app',
-                                  textAlign: TextAlign.end,
-                                  style: TextStyle(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.w200,
                                     color: Colors.white,
                                   ),
                                 ),
@@ -1843,8 +1811,82 @@ class Home extends StatelessWidget {
             height: 20,
           ),
 // the other 2 containers
-          YourWidget()
-          //another container
+          YourWidget(),
+
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            height: 270, // Assuming 270 logical pixels in height
+            color: Color(0x00ffffff),
+            child: ListView.separated(
+              itemCount: 2,
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.symmetric(
+                  horizontal: 10), // Using regular EdgeInsets
+              separatorBuilder: (context, index) {
+                return SizedBox(width: 10); // Using regular SizedBox width
+              },
+              itemBuilder: (context, index) {
+                return Container(
+                  width: 220, // Assuming 220 logical pixels in width
+                  height: 250, // Assuming 250 logical pixels in height
+                  padding: EdgeInsets.all(10),
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFE6E6E6),
+                    borderRadius: BorderRadius.circular(16),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        spreadRadius: 0.5,
+                        blurRadius: 5,
+                        offset: const Offset(0, 0),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          width: 198,
+                          height: 160,
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Color(0xff0d0e0d), // Removed previous color
+                            borderRadius: BorderRadius.circular(16),
+                            image: DecorationImage(
+                              image: AssetImage('assets/church .png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text('The Four Seasons'),
+                      Text(
+                        'Hong Kong',
+                        style: TextStyle(fontSize: 10),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        '\$279/night',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 60,
+          ), //another container
         ])));
   }
 }
