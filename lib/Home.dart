@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:muriisa/data_list.dart';
 import 'package:muriisa/radio.dart';
-import 'package:muriisa/youtube/story/storypage.dart';
+import 'package:muriisa/storypage.dart';
 import 'package:muriisa/youtube/youtube_home.dart';
 import 'package:muriisa/about.dart';
 
@@ -151,8 +151,13 @@ class Home extends StatelessWidget {
                                   foregroundColor: Color(0xffe82222),
                                 ),
                                 onPressed: () {
-                                  // Add your onPressed logic here
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => StoryPage()),
+                                  );
                                 },
+
                                 icon: Icon(Icons.play_arrow), // Play icon
                                 label: Text("WATCH"),
                               ),

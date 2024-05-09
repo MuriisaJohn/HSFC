@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class MyStory2 extends StatelessWidget {
-  const MyStory2({Key? key}) : super(key: key);
+class MyStory3 extends StatelessWidget {
+  const MyStory3({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow[200],
+      backgroundColor: Color(0xffe80000),
     );
   }
 }
