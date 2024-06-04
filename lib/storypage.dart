@@ -2,7 +2,6 @@
 
 import 'dart:async';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
 import 'package:flutter/material.dart';
 import 'stories/story_1.dart';
 import 'stories/story_2.dart';
@@ -154,9 +153,14 @@ class _StoryPageState extends State<StoryPage> {
             Positioned(
               bottom: 30,
               right: 16,
-              child: IconButton(
-                icon: Icon(Icons.share, color: Colors.white),
-                onPressed: _shareStory,
+              child: Container(
+                width: 60, // Set the width of the button
+                height: 60, // Set the height of the button
+                child: IconButton(
+                  icon: Icon(Icons.share, color: Colors.white),
+                  iconSize: 40, // Set the size of the icon
+                  onPressed: _shareStory,
+                ),
               ),
             ),
           ],
