@@ -3,7 +3,6 @@
 import 'dart:async';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'stories/story_1.dart';
 import 'stories/story_2.dart';
@@ -74,7 +73,7 @@ class _StoryPageState extends State<StoryPage> {
       setState(() {
         // as long as this isnt the first story
         if (currentStoryIndex > 0) {
-          // set previous and curent story watched percentage back to 0
+          // set previous and current story watched percentage back to 0
           percentWatched[currentStoryIndex - 1] = 0;
           percentWatched[currentStoryIndex] = 0;
 
@@ -101,6 +100,14 @@ class _StoryPageState extends State<StoryPage> {
     }
   }
 
+  void _shareStory() {
+    // Add your share functionality here
+  }
+
+  void _cancelStory() {
+    Navigator.pop(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -112,8 +119,45 @@ class _StoryPageState extends State<StoryPage> {
             myStories[currentStoryIndex],
 
             // progress bar
-            MyStoryBars(
-              percentWatched: percentWatched,
+            Positioned(
+              top: 40,
+              left: 16,
+              right: 16,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: MyProgressBar(percentWatched: percentWatched[0]),
+                  ),
+                  SizedBox(width: 4),
+                  Expanded(
+                    child: MyProgressBar(percentWatched: percentWatched[1]),
+                  ),
+                  SizedBox(width: 4),
+                  Expanded(
+                    child: MyProgressBar(percentWatched: percentWatched[2]),
+                  ),
+                ],
+              ),
+            ),
+
+            // cancel button
+            Positioned(
+              top: 50,
+              right: 16,
+              child: IconButton(
+                icon: Icon(Icons.cancel, color: Colors.white),
+                onPressed: _cancelStory,
+              ),
+            ),
+
+            // share button
+            Positioned(
+              bottom: 30,
+              right: 16,
+              child: IconButton(
+                icon: Icon(Icons.share, color: Colors.white),
+                onPressed: _shareStory,
+              ),
             ),
           ],
         ),
@@ -123,7 +167,7 @@ class _StoryPageState extends State<StoryPage> {
 }
 
 class MyStoryBars extends StatelessWidget {
-  List<double> percentWatched = [];
+  final List<double> percentWatched;
 
   MyStoryBars({required this.percentWatched});
 
@@ -136,9 +180,11 @@ class MyStoryBars extends StatelessWidget {
           Expanded(
             child: MyProgressBar(percentWatched: percentWatched[0]),
           ),
+          SizedBox(width: 4),
           Expanded(
             child: MyProgressBar(percentWatched: percentWatched[1]),
           ),
+          SizedBox(width: 4),
           Expanded(
             child: MyProgressBar(percentWatched: percentWatched[2]),
           ),
@@ -149,14 +195,14 @@ class MyStoryBars extends StatelessWidget {
 }
 
 class MyProgressBar extends StatelessWidget {
-  double percentWatched = 0;
+  final double percentWatched;
 
   MyProgressBar({required this.percentWatched});
 
   @override
   Widget build(BuildContext context) {
     return LinearPercentIndicator(
-      lineHeight: 15,
+      lineHeight: 5, // Adjusted line height for smaller progress bar
       percent: percentWatched,
       progressColor: Colors.grey[400],
       backgroundColor: Colors.grey[600],

@@ -6,6 +6,7 @@ import 'package:muriisa/radio.dart';
 import 'package:muriisa/storypage.dart';
 import 'package:muriisa/youtube/youtube_home.dart';
 import 'package:muriisa/about.dart';
+import 'package:muriisa/bible_service.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -221,12 +222,13 @@ class Home extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(width: 180),
+                const SizedBox(width: 180),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => StoryPage()),
+                      MaterialPageRoute(
+                          builder: (context) => const StoryPage()),
                     );
                   },
                   child: Icon(
@@ -240,109 +242,8 @@ class Home extends StatelessWidget {
           const SizedBox(
             height: 1,
           ),
-          Container(
-            width: MediaQuery.of(context).size.width * 0.989,
-            height: 315,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
-            clipBehavior: Clip.antiAlias,
-            decoration: ShapeDecoration(
-              color: Color(0x7F151515),
-              shape: RoundedRectangleBorder(
-                side: BorderSide(width: 1, color: Color(0xFF383737)),
-                borderRadius: BorderRadius.circular(32),
-              ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.4,
-                  child: Text(
-                    'Daily Devotion',
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w800,
-                      height: 1,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.989,
-                  height: 100,
-                  child: Text(
-                    'If we say thaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaat we have not sinned, we make Him a liar, and His word is not in us',
-                    textAlign: TextAlign.left,
-                    maxLines: 9,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Color(0xFF7F7F7F),
-                      fontSize: 15,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
-                      letterSpacing: -0.13,
-                    ),
-                  ),
-                ),
-                Container(
-                  width: double.infinity,
-                  height: 90 * fem,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.fromLTRB(
-                          0 * fem,
-                          50 * fem,
-                          30 * fem,
-                          19.95 * fem,
-                        ),
-                        width: 104 * fem,
-                        height: double.infinity,
-                        child: Container(
-                          width: double.infinity,
-                          height: double.infinity,
-                          child: Center(
-                            child: Text(
-                              '1 John 1:10',
-                              style: TextStyle(
-                                fontSize: 18 * ffem,
-                                fontWeight: FontWeight.w500,
-                                color: Color(0xffffffff),
-                                height: 1.2125 * ffem / fem,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          // Add your functionality here
-                        },
-                        style: TextButton.styleFrom(
-                          padding: EdgeInsets.only(
-                              top: 20), // Adjust the top value as needed,
-                        ),
-                        child: Container(
-                          width: 103.67 * fem,
-                          height: 76.95 * fem,
-                          child: Image.asset(
-                            "assets/share.png",
-                            width: 103.67 * fem,
-                            height: 76.95 * fem,
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
+
+          const ScriptureWidget(verse: 'Romans 8:9'),
 
           //this is the scrollable programs section
           const SizedBox(
