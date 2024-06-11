@@ -1,6 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:muriisa/radio.dart';
+import 'package:muriisa/youtube/youtube_home.dart';
+import 'package:muriisa/about.dart';
+
+import 'Home.dart';
 
 class BibleService {
   Future<Map<String, String>> fetchScripture(String verse) async {
@@ -175,45 +180,186 @@ class DetailPage extends StatelessWidget {
   final String scriptureText;
   final String scriptureReference;
 
-  DetailPage({required this.scriptureText, required this.scriptureReference});
+  const DetailPage({
+    required this.scriptureText,
+    required this.scriptureReference,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Scripture Details'),
+      extendBody: true,
+      backgroundColor: Color(0xfff1eded),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xfff6390a),
+        foregroundColor: Colors.white,
+        splashColor: Color(0x523bb7ff),
+        elevation: 4.0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        // mini: true,
+        onPressed: () {
+          // Handle button press
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+          );
+        },
+        child: Icon(Icons.live_tv),
       ),
-      body: Center(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0), // Adjust the radius as needed
+          topRight: Radius.circular(20.0), // Adjust the radius as needed
+        ),
         child: Container(
-          padding: EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                scriptureText,
-                style: TextStyle(
-                  color: Color(0xFF7F7F7F),
-                  fontSize: 15,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: -0.13,
+          child: BottomAppBar(
+            clipBehavior: Clip.antiAlias,
+            shape: CircularNotchedRectangle(),
+            notchMargin: 10,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  icon: Icon(Icons.home),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            Home(), // Replace MyRadioPage() with your page/widget
+                      ),
+                    );
+                  },
                 ),
-                textAlign: TextAlign.left,
-                maxLines: 9,
-                overflow: TextOverflow.ellipsis,
-              ),
-              SizedBox(height: 8),
-              Text(
-                scriptureReference,
-                style: TextStyle(
-                  color: Color(0xFF7F7F7F),
-                  fontSize: 14,
-                  fontFamily: 'Inter',
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: -0.13,
+                IconButton(
+                  icon: Icon(Icons.radio),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            GloryFM(), // Replace MyRadioPage() with your page/widget
+                      ),
+                    );
+                  },
                 ),
+
+                SizedBox(width: 48), // Empty space for the FloatingActionButton
+                IconButton(
+                  icon: Icon(Icons.person),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            About(), // Replace MyRadioPage() with your page/widget
+                      ),
+                    );
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.settings),
+                  onPressed: () {},
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+      appBar: AppBar(
+        backgroundColor: Color(0x04ffffff), // Change the color here
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+                'assets/WhatsApp Image 2023-11-06 at 5.14.46 PM.jpeg'), // Background image
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: FractionallySizedBox(
+            widthFactor: 0.9,
+            heightFactor: 0.7,
+            child: Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.white
+                    .withOpacity(0.8), // Semi-transparent background
+                borderRadius: BorderRadius.circular(12),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 10,
+                    offset: Offset(0, 4),
+                  ),
+                ],
               ),
-            ],
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            scriptureText,
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 18,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w600,
+                              letterSpacing: -0.13,
+                            ),
+                            textAlign: TextAlign.left,
+                          ),
+                          SizedBox(height: 12),
+                          Divider(
+                            color: Colors.black54,
+                          ),
+                          SizedBox(height: 12),
+                          Text(
+                            scriptureReference,
+                            style: TextStyle(
+                              color: Colors.black54,
+                              fontSize: 16,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w500,
+                              letterSpacing: -0.13,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          // Implement download functionality
+                        },
+                        icon: Icon(Icons.download),
+                        label: Text('Download'),
+                      ),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          // Implement share functionality
+                        },
+                        icon: Icon(Icons.share),
+                        label: Text('Share'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),

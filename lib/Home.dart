@@ -243,7 +243,7 @@ class Home extends StatelessWidget {
             height: 1,
           ),
 
-          const ScriptureWidget(verse: 'Romans 8:9'),
+          const ScriptureWidget(verse: 'Romans 8:10'),
 
           //this is the scrollable programs section
           const SizedBox(
