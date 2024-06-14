@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:muriisa/radio.dart';
 import 'package:muriisa/youtube/youtube_home.dart';
 import 'package:muriisa/about.dart';
-
+import 'package:share_plus/share_plus.dart';
 import 'Home.dart';
 
 class BibleService {
@@ -176,6 +176,8 @@ class _ScriptureWidgetState extends State<ScriptureWidget> {
   }
 }
 
+// Add this package for sharing functionality
+
 class DetailPage extends StatelessWidget {
   final String scriptureText;
   final String scriptureReference;
@@ -188,8 +190,7 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
-      backgroundColor: Color(0xfff1eded),
+      backgroundColor: Color(0x743f3e3e),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xfff6390a),
         foregroundColor: Colors.white,
@@ -201,10 +202,6 @@ class DetailPage extends StatelessWidget {
         // mini: true,
         onPressed: () {
           // Handle button press
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => HomeScreen()),
-          );
         },
         child: Icon(Icons.live_tv),
       ),
@@ -250,15 +247,7 @@ class DetailPage extends StatelessWidget {
                 SizedBox(width: 48), // Empty space for the FloatingActionButton
                 IconButton(
                   icon: Icon(Icons.person),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            About(), // Replace MyRadioPage() with your page/widget
-                      ),
-                    );
-                  },
+                  onPressed: () {},
                 ),
                 IconButton(
                   icon: Icon(Icons.settings),
@@ -269,100 +258,132 @@ class DetailPage extends StatelessWidget {
           ),
         ),
       ),
-      appBar: AppBar(
-        backgroundColor: Color(0x04ffffff), // Change the color here
-      ),
-      body: Container(
+      appBar: _buildAppBar(),
+      extendBodyBehindAppBar: true,
+      body: _buildBody(),
+    );
+  }
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      flexibleSpace: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
-                'assets/WhatsApp Image 2023-11-06 at 5.14.46 PM.jpeg'), // Background image
+            image: AssetImage('assets/background.jpg'), // Background image
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5), BlendMode.darken),
           ),
         ),
-        child: Center(
-          child: FractionallySizedBox(
-            widthFactor: 0.9,
-            heightFactor: 0.7,
-            child: Container(
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.white
-                    .withOpacity(0.8), // Semi-transparent background
-                borderRadius: BorderRadius.circular(12),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black26,
-                    blurRadius: 10,
-                    offset: Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            scriptureText,
-                            style: TextStyle(
-                              color: Colors.black87,
-                              fontSize: 18,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w600,
-                              letterSpacing: -0.13,
-                            ),
-                            textAlign: TextAlign.left,
-                          ),
-                          SizedBox(height: 12),
-                          Divider(
-                            color: Colors.black54,
-                          ),
-                          SizedBox(height: 12),
-                          Text(
-                            scriptureReference,
-                            style: TextStyle(
-                              color: Colors.black54,
-                              fontSize: 16,
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: -0.13,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          // Implement download functionality
-                        },
-                        icon: Icon(Icons.download),
-                        label: Text('Download'),
-                      ),
-                      ElevatedButton.icon(
-                        onPressed: () {
-                          // Implement share functionality
-                        },
-                        icon: Icon(Icons.share),
-                        label: Text('Share'),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+      ),
+    );
+  }
+
+  Widget _buildBody() {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/Copy.png'), // Background image
+          fit: BoxFit.cover,
+          colorFilter:
+              ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
+        ),
+      ),
+      child: Center(
+        child: FractionallySizedBox(
+          widthFactor: 0.9,
+          heightFactor: 0.7,
+          child: Container(
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.black
+                  .withOpacity(0.7), // Dark semi-transparent background
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Spacer(),
+                _buildScriptureReferenceText(scriptureReference),
+                SizedBox(height: 16),
+                _buildScriptureText(scriptureText),
+                SizedBox(height: 16),
+                _buildScriptureReferenceText(scriptureReference),
+                Spacer(),
+                _buildButtonRow(),
+              ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildScriptureReferenceText(String reference) {
+    return Text(
+      reference,
+      style: TextStyle(
+        color: Colors.yellow,
+        fontSize: 16,
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.w500,
+        letterSpacing: 1.0,
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  Widget _buildScriptureText(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+        color: Colors.yellow,
+        fontSize: 24,
+        fontFamily: 'Inter',
+        fontWeight: FontWeight.bold,
+        letterSpacing: 1.0,
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
+
+  Widget _buildButtonRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        ElevatedButton.icon(
+          onPressed: _downloadScripture,
+          icon: Icon(Icons.download),
+          label: Text('Download'),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(
+                Colors.grey[800]), // Button background color
+          ),
+        ),
+        ElevatedButton.icon(
+          onPressed: _shareScripture,
+          icon: Icon(Icons.share),
+          label: Text('Share'),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(
+                Colors.grey[800]), // Button background color
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _downloadScripture() {
+    // Implement download functionality
+    // This is a placeholder. You can implement file saving functionality here.
+    print("Download button pressed");
+  }
+
+  void _shareScripture() {
+    // Implement share functionality using the share_plus package
+    Share.share('$scriptureReference\n\n$scriptureText');
   }
 }

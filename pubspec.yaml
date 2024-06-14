@@ -14,6 +14,9 @@ dependencies:
   audioplayers: ^0.20.1
   percent_indicator: ^4.2.3
   webview_flutter: ^4.8.0
+  share_plus: ^8.0.0
+  flutter_audio_waveforms: ^1.0.0
+  audio_waveforms: ^1.0.5
   
  
   
@@ -37,7 +40,8 @@ flutter:
     - assets/3.jpeg
     - assets/4.jpeg
     - assets/HE HEALS.jpeg
-
+    - assets/OIP.jpeg
+    - assets/Copy.png
   #  - images/a_dot_ham.jpeg
   # fonts:
   #   - family: Schyler

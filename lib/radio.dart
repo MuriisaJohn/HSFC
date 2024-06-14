@@ -2,24 +2,44 @@ import 'dart:ui';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:muriisa/Home.dart';
+import 'dart:math';
 
 class GloryFM extends StatefulWidget {
   @override
   _GloryFMState createState() => _GloryFMState();
 }
 
-class _GloryFMState extends State<GloryFM> {
+class _GloryFMState extends State<GloryFM> with SingleTickerProviderStateMixin {
   AudioPlayer audioPlayer = AudioPlayer();
   bool isPlaying = false;
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    _controller.dispose();
+    super.dispose();
+  }
 
   void playPauseAudio() async {
     try {
       if (isPlaying) {
         await audioPlayer.pause();
+        _controller.stop();
       } else {
         await audioPlayer.play(
           'https://stream-155.zeno.fm/5remmcqkpd0uv?zs=aRJPFchDSMWQfAlhqYCwFA',
         );
+        _controller.repeat();
       }
     } catch (e) {
       print('Error playing audio: $e');
@@ -28,12 +48,6 @@ class _GloryFMState extends State<GloryFM> {
     setState(() {
       isPlaying = !isPlaying;
     });
-  }
-
-  @override
-  void dispose() {
-    audioPlayer.dispose();
-    super.dispose();
   }
 
   @override
@@ -160,28 +174,39 @@ class _GloryFMState extends State<GloryFM> {
                         child: Stack(
                           children: [
                             Positioned(
-                              // screenshot20230420at183729vant (402:2131)
                               left: 0 * fem,
                               top: 0 * fem,
-                              child: Align(
-                                child: SizedBox(
-                                  width: 286 * fem,
-                                  height: 292 * fem,
-                                  child: Container(
-                                    decoration: BoxDecoration(
+                              child: SizedBox(
+                                width: 286 * fem,
+                                height: 292 * fem,
+                                child: Stack(
+                                  children: [
+                                    ClipRRect(
                                       borderRadius:
                                           BorderRadius.circular(37 * fem),
-                                      gradient: LinearGradient(
-                                        begin: Alignment(0, -1),
-                                        end: Alignment(0, 1),
-                                        colors: <Color>[
-                                          Color(0xffffffff),
-                                          Color(0x00ffffff)
-                                        ],
-                                        stops: <double>[0.068, 0.9],
+                                      child: Image.asset(
+                                        'assets/OIP.jpeg',
+                                        fit: BoxFit.fill,
+                                        width: 286 * fem,
+                                        height: 292 * fem,
                                       ),
                                     ),
-                                  ),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(37 * fem),
+                                        gradient: LinearGradient(
+                                          begin: Alignment(0, -1),
+                                          end: Alignment(0, 1),
+                                          colors: <Color>[
+                                            Color(0xffffffff),
+                                            Color(0x00ffffff),
+                                          ],
+                                          stops: <double>[0.068, 0.9],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -204,29 +229,11 @@ class _GloryFMState extends State<GloryFM> {
                                           top: 0,
                                           child: Align(
                                             child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      39 * fem),
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          left: 13 * fem,
-                                          top: 16 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 270 * fem,
-                                              height: 256 * fem,
-                                              child: ClipRRect(
-                                                borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(0.0),
-                                                  topRight:
-                                                      Radius.circular(0.0),
-                                                ),
-                                                child: Image.asset(
-                                                  'assets/gloryfm-1-9rh.png',
-                                                  fit: BoxFit.fill,
-                                                ),
+                                              borderRadius: BorderRadius.only(
+                                                topLeft:
+                                                    Radius.circular(39 * fem),
+                                                topRight:
+                                                    Radius.circular(39 * fem),
                                               ),
                                             ),
                                           ),
@@ -284,21 +291,36 @@ class _GloryFMState extends State<GloryFM> {
                                       ),
                                     ),
                                     Positioned(
-                                      // rectangle5wW5 (400:1950)
-                                      left: 0 * fem,
-                                      top: 20,
-                                      child: Align(
-                                        alignment: Alignment
-                                            .center, // Adjust alignment as needed
-                                        child: IconButton(
-                                          icon: Icon(isPlaying
-                                              ? Icons.pause
-                                              : Icons.play_arrow),
-                                          iconSize: 48.0,
-                                          onPressed: playPauseAudio,
+                                      left: 50 * fem,
+                                      top: 32,
+                                      child: Center(
+                                        child: AnimatedBuilder(
+                                          animation: _controller,
+                                          builder: (context, child) {
+                                            return CustomPaint(
+                                              painter: SoundVisualizerPainter(
+                                                  _controller.value),
+                                              size: Size(235 * fem, 40 * fem),
+                                            );
+                                          },
                                         ),
                                       ),
                                     ),
+                                    Positioned(
+                                        // rectangle5wW5 (400:1950)
+                                        left: 0 * fem,
+                                        top: 20,
+                                        child: Align(
+                                          alignment: Alignment
+                                              .center, // Adjust alignment as needed
+                                          child: IconButton(
+                                            icon: Icon(isPlaying
+                                                ? Icons.pause
+                                                : Icons.play_arrow),
+                                            iconSize: 48.0,
+                                            onPressed: playPauseAudio,
+                                          ),
+                                        ))
                                   ],
                                 ),
                               ),
@@ -312,58 +334,6 @@ class _GloryFMState extends State<GloryFM> {
                         height: 396 * fem,
                         child: Stack(
                           children: [
-                            Positioned(
-                              // group22JE9 (401:1981)
-                              left: 144.9999084473 * fem,
-                              top: 315.5 * fem,
-                              child: Opacity(
-                                opacity: 0.8,
-                                child: Container(
-                                  width: 87 * fem,
-                                  height: 53.17 * fem,
-                                  child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          margin: EdgeInsets.fromLTRB(0 * fem,
-                                              0 * fem, 0 * fem, 22.17 * fem),
-                                          child: Column(
-                                            children: [
-                                              Text(
-                                                'HOLY SPIRIT',
-                                                style: TextStyle(
-                                                  fontFamily: 'Urbanist',
-                                                  fontSize:
-                                                      15.1690530777 * ffem,
-                                                  fontWeight: FontWeight.w600,
-                                                  height:
-                                                      1.3999999371 * ffem / fem,
-                                                  letterSpacing:
-                                                      0.1784594804 * fem,
-                                                  color: Color(0xffffffff),
-                                                ),
-                                              ),
-                                              Text(
-                                                'FIRE CHURCH MEDIA',
-                                                style: TextStyle(
-                                                  fontFamily: 'Urbanist',
-                                                  fontSize: 5.9727435112 * ffem,
-                                                  fontWeight: FontWeight.w500,
-                                                  height:
-                                                      1.4000000479 * ffem / fem,
-                                                  letterSpacing:
-                                                      0.0702263415 * fem,
-                                                  color: Color(0x7fffffff),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ]),
-                                ),
-                              ),
-                            ),
                             Positioned(
                               // filtersDkR (404:2171)
                               left: 0 * fem,
@@ -759,5 +729,43 @@ class _GloryFMState extends State<GloryFM> {
         ),
       ),
     );
+  }
+}
+
+class SoundVisualizerPainter extends CustomPainter {
+  final double animationValue;
+
+  SoundVisualizerPainter(this.animationValue);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.orange
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.0;
+
+    final path = Path();
+    final waveHeight = size.height / 2;
+    final waveLength = size.width;
+    final amplitude = 50.0; // Adjust amplitude for wave height
+
+    for (double i = 0; i <= waveLength; i++) {
+      double waveProgress = i / waveLength;
+      double animProgress = sin(waveProgress * 2 * pi * 4 +
+          animationValue *
+              2 *
+              pi); // Increase frequency (4x) and slow down animation
+      path.lineTo(
+          i,
+          waveHeight +
+              animProgress * amplitude); // Use amplitude for wave height
+    }
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
   }
 }
