@@ -1,11 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:muriisa/data_list.dart';
+
 import 'package:muriisa/radio.dart';
 import 'package:muriisa/storypage.dart';
 import 'package:muriisa/youtube/youtube_home.dart';
 import 'package:muriisa/about.dart';
+import 'package:muriisa/clock.dart';
 import 'package:muriisa/bible_service.dart';
 
 class Home extends StatelessWidget {
@@ -15,14 +16,13 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     double baseWidth = 308;
     double fem = MediaQuery.of(context).size.width / baseWidth;
-    double ffem = fem * 0.97;
     return Scaffold(
         extendBody: true,
-        backgroundColor: Color(0xff060606),
+        backgroundColor: const Color(0xff060606),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Color(0xfff6390a),
+          backgroundColor: const Color(0xfff6390a),
           foregroundColor: Colors.white,
-          splashColor: Color(0x523bb7ff),
+          splashColor: const Color(0x523bb7ff),
           elevation: 4.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
@@ -35,36 +35,36 @@ class Home extends StatelessWidget {
               MaterialPageRoute(builder: (context) => HomeScreen()),
             );
           },
-          child: Icon(Icons.live_tv),
+          child: const Icon(Icons.live_tv),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: ClipRRect(
-          borderRadius: BorderRadius.only(
+          borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(20.0), // Adjust the radius as needed
             topRight: Radius.circular(20.0), // Adjust the radius as needed
           ),
           child: Container(
             child: BottomAppBar(
               clipBehavior: Clip.antiAlias,
-              shape: CircularNotchedRectangle(),
+              shape: const CircularNotchedRectangle(),
               notchMargin: 10,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
-                    icon: Icon(Icons.home),
+                    icon: const Icon(Icons.home),
                     onPressed: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) =>
-                              Home(), // Replace MyRadioPage() with your page/widget
+                              const Home(), // Replace MyRadioPage() with your page/widget
                         ),
                       );
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.radio),
+                    icon: const Icon(Icons.radio),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -76,10 +76,10 @@ class Home extends StatelessWidget {
                     },
                   ),
 
-                  SizedBox(
+                  const SizedBox(
                       width: 48), // Empty space for the FloatingActionButton
                   IconButton(
-                    icon: Icon(Icons.person),
+                    icon: const Icon(Icons.person),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -91,7 +91,7 @@ class Home extends StatelessWidget {
                     },
                   ),
                   IconButton(
-                    icon: Icon(Icons.settings),
+                    icon: const Icon(Icons.settings),
                     onPressed: () {},
                   ),
                 ],
@@ -116,8 +116,9 @@ class Home extends StatelessWidget {
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(29 * fem),
+                  side: const BorderSide(width: 1, color: Color(0xFF383737)),
                 ),
-                color: Color(0x00000000),
+                color: const Color(0x00000000),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(29 * fem),
                   child: Stack(
@@ -149,29 +150,30 @@ class Home extends StatelessWidget {
                               child: ElevatedButton.icon(
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.white,
-                                  foregroundColor: Color(0xffe82222),
+                                  foregroundColor: const Color(0xffe82222),
                                 ),
                                 onPressed: () {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => StoryPage()),
+                                        builder: (context) =>
+                                            const StoryPage()),
                                   );
                                 },
 
-                                icon: Icon(Icons.play_arrow), // Play icon
-                                label: Text("WATCH"),
+                                icon: const Icon(Icons.play_arrow), // Play icon
+                                label: const Text("WATCH"),
                               ),
                             ),
                             const Spacer(),
                           ],
                         ),
                       ),
-                      Stack(
+                      const Stack(
                         children: [
                           // Your existing widgets...
 
-                          Positioned(
+                          /* Positioned(
                             right: 10 * fem,
                             top: 6 * fem,
                             child: Container(
@@ -191,7 +193,7 @@ class Home extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
+                          ),*/
                         ],
                       )
                     ],
@@ -200,45 +202,7 @@ class Home extends StatelessWidget {
               ),
             ),
           ),
-          Container(
-            alignment: Alignment.centerLeft, // Align the Row to the left
-            child: Row(
-              crossAxisAlignment:
-                  CrossAxisAlignment.start, // Align items to the start
-              children: [
-                Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start, // Align text to the start
-                  children: [
-                    Text(
-                      '    REFRESH',
-                      style: TextStyle(
-                        fontFamily: 'Pacifico',
-                        fontSize: 20 * ffem,
-                        fontWeight: FontWeight.w600,
-                        height: 1.5 * ffem / fem,
-                        color: Color(0xFFFFFFFF),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 180),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const StoryPage()),
-                    );
-                  },
-                  child: Icon(
-                    Icons.local_fire_department,
-                    color: Colors.green,
-                  ),
-                )
-              ],
-            ),
-          ),
+          GreetingWidget(),
           const SizedBox(
             height: 1,
           ),
@@ -271,7 +235,7 @@ class Home extends StatelessWidget {
                               width: 415,
                               padding: const EdgeInsets.all(10),
                               decoration: ShapeDecoration(
-                                color: Color(0xFF292B3A),
+                                color: const Color(0xFF292B3A),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(14),
                                 ),
@@ -330,8 +294,8 @@ class Home extends StatelessWidget {
                                                       Container(
                                                         width: 19,
                                                         height: 17,
-                                                        child:
-                                                            Stack(children: []),
+                                                        child: const Stack(
+                                                            children: []),
                                                       ),
                                                     ],
                                                   ),
@@ -339,7 +303,7 @@ class Home extends StatelessWidget {
                                                 const SizedBox(width: 10),
                                                 Expanded(
                                                   child: Container(
-                                                    child: Column(
+                                                    child: const Column(
                                                       mainAxisSize:
                                                           MainAxisSize.min,
                                                       mainAxisAlignment:
@@ -398,13 +362,13 @@ class Home extends StatelessWidget {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 10, vertical: 6),
                                           decoration: ShapeDecoration(
-                                            color: Color(0xFF5074D5),
+                                            color: const Color(0xFF5074D5),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                             ),
                                           ),
-                                          child: Row(
+                                          child: const Row(
                                             mainAxisSize: MainAxisSize.min,
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
@@ -427,10 +391,10 @@ class Home extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: double.infinity,
                                     child: Text(
-                                      '             lunch hour fellowship',
+                                      '       lunch hour fellowship',
                                       style: TextStyle(
                                         color: Color(0xFFC2C2C2),
                                         fontSize: 16,
@@ -453,7 +417,7 @@ class Home extends StatelessWidget {
                                           child: Container(
                                             height: 30,
                                             decoration: ShapeDecoration(
-                                              color: Color(0xFF3E404D),
+                                              color: const Color(0xFF3E404D),
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(6)),
@@ -497,7 +461,7 @@ class Home extends StatelessWidget {
                                                         width: 15,
                                                         height: 15,
                                                         decoration:
-                                                            ShapeDecoration(
+                                                            const ShapeDecoration(
                                                           color:
                                                               Color(0xFF5074D5),
                                                           shape: OvalBorder(),
@@ -507,7 +471,7 @@ class Home extends StatelessWidget {
                                                   ),
                                                 ),
                                                 const SizedBox(width: 10),
-                                                Expanded(
+                                                const Expanded(
                                                   child: SizedBox(
                                                     child: Text(
                                                       'Minister’s class',
@@ -531,7 +495,7 @@ class Home extends StatelessWidget {
                                           child: Container(
                                             height: 30,
                                             decoration: ShapeDecoration(
-                                              color: Color(0xFF3E404D),
+                                              color: const Color(0xFF3E404D),
                                               shape: RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(6)),
@@ -575,7 +539,7 @@ class Home extends StatelessWidget {
                                                         width: 15,
                                                         height: 15,
                                                         decoration:
-                                                            ShapeDecoration(
+                                                            const ShapeDecoration(
                                                           color:
                                                               Color(0xFF59E043),
                                                           shape: OvalBorder(),
@@ -585,7 +549,7 @@ class Home extends StatelessWidget {
                                                   ),
                                                 ),
                                                 const SizedBox(width: 10),
-                                                Expanded(
+                                                const Expanded(
                                                   child: SizedBox(
                                                     child: Text(
                                                       '6pm',
@@ -618,7 +582,7 @@ class Home extends StatelessWidget {
                         width: 415,
                         padding: const EdgeInsets.all(10),
                         decoration: ShapeDecoration(
-                          color: Color(0xFF292B3A),
+                          color: const Color(0xFF292B3A),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14),
                           ),
@@ -668,7 +632,8 @@ class Home extends StatelessWidget {
                                                 Container(
                                                   width: 19,
                                                   height: 17,
-                                                  child: Stack(children: []),
+                                                  child:
+                                                      const Stack(children: []),
                                                 ),
                                               ],
                                             ),
@@ -676,7 +641,7 @@ class Home extends StatelessWidget {
                                           const SizedBox(width: 10),
                                           Expanded(
                                             child: Container(
-                                              child: Column(
+                                              child: const Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.start,
@@ -725,12 +690,12 @@ class Home extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 6),
                                     decoration: ShapeDecoration(
-                                      color: Color(0xFF5074D5),
+                                      color: const Color(0xFF5074D5),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    child: Row(
+                                    child: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
@@ -753,7 +718,7 @@ class Home extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: double.infinity,
                               child: Text(
                                 'lunch hour fellowship              ',
@@ -777,7 +742,7 @@ class Home extends StatelessWidget {
                                     child: Container(
                                       height: 30,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF3E404D),
+                                        color: const Color(0xFF3E404D),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(6)),
@@ -814,7 +779,8 @@ class Home extends StatelessWidget {
                                                 Container(
                                                   width: 15,
                                                   height: 15,
-                                                  decoration: ShapeDecoration(
+                                                  decoration:
+                                                      const ShapeDecoration(
                                                     color: Color(0xFF5074D5),
                                                     shape: OvalBorder(),
                                                   ),
@@ -823,7 +789,7 @@ class Home extends StatelessWidget {
                                             ),
                                           ),
                                           const SizedBox(width: 10),
-                                          Expanded(
+                                          const Expanded(
                                             child: SizedBox(
                                               child: Text(
                                                 'Prayer alter',
@@ -846,7 +812,7 @@ class Home extends StatelessWidget {
                                     child: Container(
                                       height: 30,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF3E404D),
+                                        color: const Color(0xFF3E404D),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(6)),
@@ -883,7 +849,8 @@ class Home extends StatelessWidget {
                                                 Container(
                                                   width: 15,
                                                   height: 15,
-                                                  decoration: ShapeDecoration(
+                                                  decoration:
+                                                      const ShapeDecoration(
                                                     color: Color(0xFF59E043),
                                                     shape: OvalBorder(),
                                                   ),
@@ -892,7 +859,7 @@ class Home extends StatelessWidget {
                                             ),
                                           ),
                                           const SizedBox(width: 10),
-                                          Expanded(
+                                          const Expanded(
                                             child: SizedBox(
                                               child: Text(
                                                 '5pm-8 pm',
@@ -921,7 +888,7 @@ class Home extends StatelessWidget {
                         width: 415,
                         padding: const EdgeInsets.all(10),
                         decoration: ShapeDecoration(
-                          color: Color(0xFF292B3A),
+                          color: const Color(0xFF292B3A),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14),
                           ),
@@ -971,7 +938,8 @@ class Home extends StatelessWidget {
                                                 Container(
                                                   width: 19,
                                                   height: 17,
-                                                  child: Stack(children: []),
+                                                  child:
+                                                      const Stack(children: []),
                                                 ),
                                               ],
                                             ),
@@ -979,7 +947,7 @@ class Home extends StatelessWidget {
                                           const SizedBox(width: 10),
                                           Expanded(
                                             child: Container(
-                                              child: Column(
+                                              child: const Column(
                                                 mainAxisSize: MainAxisSize.min,
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.start,
@@ -1028,12 +996,12 @@ class Home extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 6),
                                     decoration: ShapeDecoration(
-                                      color: Color(0xFF5074D5),
+                                      color: const Color(0xFF5074D5),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20),
                                       ),
                                     ),
-                                    child: Row(
+                                    child: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
@@ -1056,7 +1024,7 @@ class Home extends StatelessWidget {
                                 ],
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: double.infinity,
                               child: Text(
                                 'lunch hour fellowship  ',
@@ -1080,7 +1048,7 @@ class Home extends StatelessWidget {
                                     child: Container(
                                       height: 30,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF3E404D),
+                                        color: const Color(0xFF3E404D),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(6)),
@@ -1117,7 +1085,8 @@ class Home extends StatelessWidget {
                                                 Container(
                                                   width: 15,
                                                   height: 15,
-                                                  decoration: ShapeDecoration(
+                                                  decoration:
+                                                      const ShapeDecoration(
                                                     color: Color(0xFF5074D5),
                                                     shape: OvalBorder(),
                                                   ),
@@ -1126,7 +1095,7 @@ class Home extends StatelessWidget {
                                             ),
                                           ),
                                           const SizedBox(width: 10),
-                                          Expanded(
+                                          const Expanded(
                                             child: SizedBox(
                                               child: Text(
                                                 'Minister’s class',
@@ -1149,7 +1118,7 @@ class Home extends StatelessWidget {
                                     child: Container(
                                       height: 30,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF3E404D),
+                                        color: const Color(0xFF3E404D),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(6)),
@@ -1186,7 +1155,8 @@ class Home extends StatelessWidget {
                                                 Container(
                                                   width: 15,
                                                   height: 15,
-                                                  decoration: ShapeDecoration(
+                                                  decoration:
+                                                      const ShapeDecoration(
                                                     color: Color(0xFF59E043),
                                                     shape: OvalBorder(),
                                                   ),
@@ -1195,7 +1165,7 @@ class Home extends StatelessWidget {
                                             ),
                                           ),
                                           const SizedBox(width: 10),
-                                          Expanded(
+                                          const Expanded(
                                             child: SizedBox(
                                               child: Text(
                                                 '6pm',
@@ -1224,7 +1194,7 @@ class Home extends StatelessWidget {
                         width: 415,
                         padding: const EdgeInsets.all(10),
                         decoration: ShapeDecoration(
-                          color: Color(0xFF292B3A),
+                          color: const Color(0xFF292B3A),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(14),
                           ),
@@ -1274,7 +1244,8 @@ class Home extends StatelessWidget {
                                                 Container(
                                                   width: 19,
                                                   height: 17,
-                                                  child: Stack(children: []),
+                                                  child:
+                                                      const Stack(children: []),
                                                 ),
                                               ],
                                             ),
@@ -1331,7 +1302,7 @@ class Home extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 10, vertical: 6),
                                     decoration: ShapeDecoration(
-                                      color: Color(0xFF5074D5),
+                                      color: const Color(0xFF5074D5),
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(20),
                                       ),
@@ -1383,7 +1354,7 @@ class Home extends StatelessWidget {
                                     child: Container(
                                       height: 30,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF3E404D),
+                                        color: const Color(0xFF3E404D),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(6)),
@@ -1453,7 +1424,7 @@ class Home extends StatelessWidget {
                                     child: Container(
                                       height: 30,
                                       decoration: ShapeDecoration(
-                                        color: Color(0xFF3E404D),
+                                        color: const Color(0xFF3E404D),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(6)),
@@ -1490,7 +1461,8 @@ class Home extends StatelessWidget {
                                                 Container(
                                                   width: 15,
                                                   height: 15,
-                                                  decoration: ShapeDecoration(
+                                                  decoration:
+                                                      const ShapeDecoration(
                                                     color: Color(0xFF59E043),
                                                     shape: OvalBorder(),
                                                   ),
@@ -1498,7 +1470,7 @@ class Home extends StatelessWidget {
                                               ],
                                             ),
                                           ),
-                                          Expanded(
+                                          const Expanded(
                                             child: SizedBox(
                                               child: Text(
                                                 '8:AM- until late',
@@ -1566,7 +1538,7 @@ class Home extends StatelessWidget {
                           width: MediaQuery.of(context).size.width * 0.989,
                           height: MediaQuery.of(context).size.height * 0.3,
                           decoration: ShapeDecoration(
-                            color: Color(0xFF292B3A),
+                            color: const Color(0xFF292B3A),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16),
                             ),
@@ -1599,7 +1571,7 @@ class Home extends StatelessWidget {
                           ),
                         ),
                       ),
-                      Positioned(
+                      const Positioned(
                         left: 28.62,
                         top: 47,
                         child: SizedBox(
@@ -1673,7 +1645,7 @@ class Home extends StatelessWidget {
                           padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 6),
                           decoration: ShapeDecoration(
-                            color: Color(0xFF5074D5),
+                            color: const Color(0xFF5074D5),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
@@ -1714,43 +1686,41 @@ class Home extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
-// the other 2 containers
-          YourWidget(),
+
+          // the other 2 containers
+          //YourWidget(),
 
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Container(
             height: 270, // Assuming 270 logical pixels in height
-            color: Color(0x00ffffff),
+            color: const Color(0x00ffffff),
             child: ListView.separated(
               itemCount: 2,
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                   horizontal: 10), // Using regular EdgeInsets
               separatorBuilder: (context, index) {
-                return SizedBox(width: 10); // Using regular SizedBox width
+                return const SizedBox(
+                    width: 10); // Using regular SizedBox width
               },
               itemBuilder: (context, index) {
                 return Container(
                   width: 220, // Assuming 220 logical pixels in width
                   height: 250, // Assuming 250 logical pixels in height
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFE6E6E6),
-                    borderRadius: BorderRadius.circular(16),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        spreadRadius: 0.5,
-                        blurRadius: 5,
-                        offset: const Offset(0, 0),
-                      ),
-                    ],
+                  padding: const EdgeInsets.all(10),
+                  margin: const EdgeInsets.all(10),
+                  decoration: ShapeDecoration(
+                    color: const Color(0x7F151515),
+                    shape: RoundedRectangleBorder(
+                      side:
+                          const BorderSide(width: 1, color: Color(0xFF383737)),
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -1759,27 +1729,35 @@ class Home extends StatelessWidget {
                         child: Container(
                           width: 198,
                           height: 160,
-                          padding: EdgeInsets.all(10),
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: Color(0xff0d0e0d), // Removed previous color
+                            color: Colors.white, // Removed previous color
                             borderRadius: BorderRadius.circular(16),
-                            image: DecorationImage(
+                            image: const DecorationImage(
                               image: AssetImage('assets/church .png'),
                               fit: BoxFit.cover,
                             ),
                           ),
                         ),
                       ),
-                      SizedBox(height: 5),
-                      Text('The Four Seasons'),
-                      Text(
-                        'Hong Kong',
-                        style: TextStyle(fontSize: 10),
-                      ),
-                      SizedBox(height: 10),
-                      Text(
-                        '\$279/night',
+                      const SizedBox(height: 5),
+                      const Text(
+                        'Your  Season',
                         style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const Text(
+                        'Testimonies',
+                        style: TextStyle(color: Colors.white, fontSize: 10),
+                      ),
+                      const SizedBox(height: 10),
+                      const Text(
+                        'chat with us',
+                        style: TextStyle(
+                          color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
                         ),
@@ -1791,7 +1769,7 @@ class Home extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 60,
+            height: 75,
           ), //another container
         ])));
   }

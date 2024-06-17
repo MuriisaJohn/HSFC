@@ -68,9 +68,9 @@ class _ScriptureWidgetState extends State<ScriptureWidget> {
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
       clipBehavior: Clip.antiAlias,
       decoration: ShapeDecoration(
-        color: Color(0x7F151515),
+        color: const Color(0x7F151515),
         shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: Color(0xFF383737)),
+          side: const BorderSide(width: 1, color: Color(0xFF383737)),
           borderRadius: BorderRadius.circular(32),
         ),
       ),
@@ -81,7 +81,7 @@ class _ScriptureWidgetState extends State<ScriptureWidget> {
         children: [
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.5,
-            child: Text(
+            child: const Text(
               'Daily Devotion',
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
@@ -101,7 +101,7 @@ class _ScriptureWidgetState extends State<ScriptureWidget> {
               textAlign: TextAlign.left,
               maxLines: 9,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0xFF7F7F7F),
                 fontSize: 15,
                 fontFamily: 'Inter',
@@ -110,66 +110,72 @@ class _ScriptureWidgetState extends State<ScriptureWidget> {
               ),
             ),
           ),
-          SizedBox(
-            width: double.infinity,
-            height: 90 * fem,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  margin: EdgeInsets.fromLTRB(
-                    0 * fem,
-                    50 * fem,
-                    30 * fem,
-                    19.95 * fem,
-                  ),
-                  width: 104 * fem,
-                  height: double.infinity,
-                  child: SizedBox(
-                    width: double.infinity,
+
+          // Other widgets in your Stack
+          Positioned(
+            left: 80,
+            bottom: 0,
+            child: SizedBox(
+              width: double.infinity,
+              height: 90 * fem,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(
+                      0 * fem,
+                      50 * fem,
+                      30 * fem,
+                      19.95 * fem,
+                    ),
+                    width: 104 * fem,
                     height: double.infinity,
-                    child: Center(
-                      child: Text(
-                        scriptureReference,
-                        style: TextStyle(
-                          fontSize: 18 * ffem,
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xffffffff),
-                          height: 1.2125 * ffem / fem,
+                    child: SizedBox(
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: Center(
+                        child: Text(
+                          scriptureReference,
+                          style: TextStyle(
+                            fontSize: 18 * ffem,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xffffffff),
+                            height: 1.2125 * ffem / fem,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailPage(
-                          scriptureText: scriptureText,
-                          scriptureReference: scriptureReference,
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailPage(
+                            scriptureText: scriptureText,
+                            scriptureReference: scriptureReference,
+                          ),
                         ),
-                      ),
-                    ); // Add your functionality here
-                  },
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.only(
-                        top: 20), // Adjust the top value as needed,
-                  ),
-                  child: Container(
-                    width: 103.67 * fem,
-                    height: 76.95 * fem,
-                    child: Image.asset(
-                      "assets/share.png",
+                      ); // Add your functionality here
+                    },
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.only(
+                          top: 20), // Adjust the top value as needed,
+                    ),
+                    child: Container(
                       width: 103.67 * fem,
                       height: 76.95 * fem,
+                      child: Image.asset(
+                        "assets/share.png",
+                        width: 103.67 * fem,
+                        height: 76.95 * fem,
+                      ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -183,6 +189,7 @@ class DetailPage extends StatelessWidget {
   final String scriptureReference;
 
   const DetailPage({
+    super.key,
     required this.scriptureText,
     required this.scriptureReference,
   });
@@ -190,11 +197,11 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0x743f3e3e),
+      backgroundColor: const Color(0x743f3e3e),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xfff6390a),
+        backgroundColor: const Color(0xfff6390a),
         foregroundColor: Colors.white,
-        splashColor: Color(0x523bb7ff),
+        splashColor: const Color(0x523bb7ff),
         elevation: 4.0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -203,36 +210,36 @@ class DetailPage extends StatelessWidget {
         onPressed: () {
           // Handle button press
         },
-        child: Icon(Icons.live_tv),
+        child: const Icon(Icons.live_tv),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(20.0), // Adjust the radius as needed
           topRight: Radius.circular(20.0), // Adjust the radius as needed
         ),
         child: Container(
           child: BottomAppBar(
             clipBehavior: Clip.antiAlias,
-            shape: CircularNotchedRectangle(),
+            shape: const CircularNotchedRectangle(),
             notchMargin: 10,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 IconButton(
-                  icon: Icon(Icons.home),
+                  icon: const Icon(Icons.home),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            Home(), // Replace MyRadioPage() with your page/widget
+                            const Home(), // Replace MyRadioPage() with your page/widget
                       ),
                     );
                   },
                 ),
                 IconButton(
-                  icon: Icon(Icons.radio),
+                  icon: const Icon(Icons.radio),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -244,13 +251,14 @@ class DetailPage extends StatelessWidget {
                   },
                 ),
 
-                SizedBox(width: 48), // Empty space for the FloatingActionButton
+                const SizedBox(
+                    width: 48), // Empty space for the FloatingActionButton
                 IconButton(
-                  icon: Icon(Icons.person),
+                  icon: const Icon(Icons.person),
                   onPressed: () {},
                 ),
                 IconButton(
-                  icon: Icon(Icons.settings),
+                  icon: const Icon(Icons.settings),
                   onPressed: () {},
                 ),
               ],
@@ -271,7 +279,8 @@ class DetailPage extends StatelessWidget {
       flexibleSpace: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/background.jpg'), // Background image
+            image:
+                const AssetImage('assets/background.jpg'), // Background image
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.black.withOpacity(0.5), BlendMode.darken),
@@ -285,7 +294,7 @@ class DetailPage extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('assets/Copy.png'), // Background image
+          image: const AssetImage('assets/Copy.png'), // Background image
           fit: BoxFit.cover,
           colorFilter:
               ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
@@ -296,7 +305,7 @@ class DetailPage extends StatelessWidget {
           widthFactor: 0.9,
           heightFactor: 0.7,
           child: Container(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.black
                   .withOpacity(0.7), // Dark semi-transparent background
@@ -306,13 +315,13 @@ class DetailPage extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Spacer(),
+                const Spacer(),
                 _buildScriptureReferenceText(scriptureReference),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 _buildScriptureText(scriptureText),
-                SizedBox(height: 16),
+                const SizedBox(height: 16),
                 _buildScriptureReferenceText(scriptureReference),
-                Spacer(),
+                const Spacer(),
                 _buildButtonRow(),
               ],
             ),
@@ -325,7 +334,7 @@ class DetailPage extends StatelessWidget {
   Widget _buildScriptureReferenceText(String reference) {
     return Text(
       reference,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.yellow,
         fontSize: 16,
         fontFamily: 'Inter',
@@ -339,7 +348,7 @@ class DetailPage extends StatelessWidget {
   Widget _buildScriptureText(String text) {
     return Text(
       text,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.yellow,
         fontSize: 24,
         fontFamily: 'Inter',
@@ -356,8 +365,8 @@ class DetailPage extends StatelessWidget {
       children: [
         ElevatedButton.icon(
           onPressed: _downloadScripture,
-          icon: Icon(Icons.download),
-          label: Text('Download'),
+          icon: const Icon(Icons.download),
+          label: const Text('Download'),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(
                 Colors.grey[800]), // Button background color
@@ -365,8 +374,8 @@ class DetailPage extends StatelessWidget {
         ),
         ElevatedButton.icon(
           onPressed: _shareScripture,
-          icon: Icon(Icons.share),
-          label: Text('Share'),
+          icon: const Icon(Icons.share),
+          label: const Text('Share'),
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(
                 Colors.grey[800]), // Button background color
